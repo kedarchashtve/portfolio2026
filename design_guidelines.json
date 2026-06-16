@@ -1,0 +1,160 @@
+{
+  "project_name": "Portfolio Redesign - Kedar Chashtve",
+  "design_vision": {
+    "theme": "dark",
+    "archetype": "Archetype 7: Electric & Neon (Adapted for Aceternity UI/Linear Premium Minimalism)",
+    "core_concept": "Recruiters must understand Kedar's Growth Marketing strategy in <10s. The site should feel like a premium SaaS product, not a static document. Heavy focus on storytelling, proof, and high-end motion.",
+    "avoid": [
+      "Heavy gradients everywhere",
+      "Logo cloud overload",
+      "Generic timeline sections",
+      "Center-Everything disease",
+      "Inter for headings"
+    ]
+  },
+  "colors": {
+    "background": {
+      "default": "#050816",
+      "description": "Deepest space black/indigo for depth."
+    },
+    "surface": {
+      "default": "#0F172A",
+      "glass": "rgba(15, 23, 42, 0.6)",
+      "description": "Premium slate blue for cards and floating headers. Always use with backdrop-blur-xl."
+    },
+    "accent": {
+      "primary": "#7C3AED",
+      "secondary": "#06B6D4",
+      "glow": "rgba(124, 58, 237, 0.15)",
+      "description": "Used strictly for interactive states, metric highlights, and subtle background glows. DO NOT use for heavy solid backgrounds."
+    },
+    "text": {
+      "primary": "#F8FAFC",
+      "secondary": "#94A3B8",
+      "muted": "#64748B"
+    },
+    "border": {
+      "default": "rgba(255, 255, 255, 0.1)",
+      "highlight": "rgba(255, 255, 255, 0.2)"
+    }
+  },
+  "typography": {
+    "font_families": {
+      "heading": "Outfit, sans-serif",
+      "body": "Inter, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "hierarchy": {
+      "h1": "text-5xl md:text-7xl tracking-tighter font-medium text-balance",
+      "h2": "text-3xl md:text-4xl tracking-tight font-medium",
+      "h3": "text-xl md:text-2xl tracking-tight font-medium",
+      "body": "text-base leading-relaxed text-[#94A3B8]",
+      "overline": "text-xs uppercase tracking-[0.2em] font-mono text-[#06B6D4]",
+      "metrics": "text-4xl md:text-5xl font-mono text-[#F8FAFC]"
+    }
+  },
+  "layout_and_spacing": {
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "section_spacing": "py-24 md:py-32",
+    "bento_grid": {
+      "gap": "gap-6 md:gap-8",
+      "internal_padding": "p-8 md:p-10",
+      "radius": "rounded-2xl md:rounded-3xl"
+    },
+    "surface_styles": {
+      "glass_panel": "bg-[#0F172A]/60 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)]",
+      "flat_card": "bg-[#0F172A] border border-white/5 hover:border-white/20 transition-colors duration-300",
+      "tracing_beam_card": "relative overflow-hidden border border-white/10 before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_var(--mouse-x)_var(--mouse-y),rgba(124,58,237,0.15),transparent_80%)]"
+    }
+  },
+  "motion_and_interaction": {
+    "hero": {
+      "headline": "Word-by-word staggered reveal using framer-motion.",
+      "metrics": "Count-up animation on viewport enter.",
+      "background": "Subtle, mouse-responsive CSS radial gradient glow + fixed SVG grid pattern with linear-gradient mask for depth."
+    },
+    "buttons": {
+      "primary": "Magnetic hover effect using framer-motion. bg-[#F8FAFC] text-[#050816] hover:bg-[#E2E8F0] font-medium transition-all px-6 py-3 rounded-full",
+      "secondary": "Glass pill button. bg-white/5 border border-white/10 hover:bg-white/10 text-[#F8FAFC] backdrop-blur-md transition-all px-6 py-3 rounded-full"
+    },
+    "scroll": {
+      "lenis": "Implement smooth scrolling globally using @studio-freight/lenis to give it a premium feel."
+    },
+    "hover_states": {
+      "cards": "Smooth -translate-y-1 transform, slight increase in border opacity (border-white/20), and ambient drop shadow (shadow-2xl shadow-[#7C3AED]/10)."
+    }
+  },
+  "sections_blueprint": {
+    "navigation": {
+      "style": "Floating glassmorphism pill, fixed top-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-full border border-white/10 bg-[#0F172A]/70 backdrop-blur-xl flex gap-8 items-center",
+      "links": "About, Case Studies, Experience, Contact"
+    },
+    "hero": {
+      "layout": "grid md:grid-cols-2 gap-12 min-h-screen items-center pt-24",
+      "left": "Headline ('Growth Marketing Strategist'), Subhead, Metrics row (4+ Years, 20+ Brands, 47% Email Growth), CTAs.",
+      "right": "Animated Growth Dashboard: Absolute positioned overlapping glass panels. Include abstract growth graph (Recharts), funnel viz, and AI workflow nodes connecting via SVG paths. Use Framer Motion for floating effect."
+    },
+    "case_studies": {
+      "layout": "Grid cols-1 md:grid-cols-3 gap-6. Max 3 items. Use Bento Grid spacing.",
+      "interaction": "Hover expands image/glow. Click opens Radix UI / Shadcn Dialog modal with sections: Problem / Strategy / Actions / Results / Tools.",
+      "visual": "Card background uses media_assets below with overlay."
+    },
+    "growth_framework": {
+      "layout": "Horizontal or zigzag flowing timeline (Research -> Strategy -> Content -> Distribution -> Optimization).",
+      "interaction": "Each node expands on hover to show detailed bullet points. Use lucide-react icons. Animated dashed SVG lines connect the nodes, with a 'flowing dot' animation to show direction."
+    },
+    "experience": {
+      "layout": "Vertical timeline with a glowing left border. Aceternity 'Tracing Beam' style effect on the line.",
+      "visual": "High contrast role titles, subdued dates. Collapsible sections for older roles to save space. Clear spacing."
+    },
+    "skills": {
+      "layout": "Bento Grid clusters (Growth & Performance, Content & Social, Analytics, AI Workflows).",
+      "interaction": "Hover reveals specific tools/examples inside the cluster via cross-fade."
+    },
+    "currently_exploring": {
+      "layout": "Grid cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6",
+      "visual": "Aceternity style 'Hover Effect' cards. When mouse moves over the grid, a radial gradient follows the cursor underneath the cards."
+    },
+    "contact": {
+      "layout": "Minimalist centered block with generous top/bottom padding.",
+      "content": "Massive 'Let's Connect' heading. Links: Email (mailto), LinkedIn, Resume Download. DO NOT include GitHub."
+    }
+  },
+  "media_assets": {
+    "case_studies": {
+      "growth_systems": {
+        "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxkYXNoYm9hcmQlMjBkYXRhJTIwYWJzdHJhY3QlMjBkYXJrfGVufDB8fHx8MTc4MTYyNzgwNnww&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract data dashboard for Growth Systems case study background."
+      },
+      "multi_industry_agency": {
+        "url": "https://images.unsplash.com/photo-1515703944563-dbcfbf121b3d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBhcmNoaXRlY3R1cmUlMjBkYXJrfGVufDB8fHx8MTc4MTYyNzgwNnww&ixlib=rb-4.1.0&q=85",
+        "description": "Modern dark architecture for Agency case study background."
+      },
+      "d2c_wellness": {
+        "url": "https://images.unsplash.com/photo-1644088379091-d574269d422f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NjV8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRpZ2l0YWwlMjBub2RlcyUyMG5ldHdvcmslMjBkYXJrfGVufDB8fHx8MTc4MTYyNzgwNnww&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract digital nodes for D2C Wellness AI/growth case study."
+      }
+    }
+  },
+  "technical_requirements": {
+    "language": "JavaScript (.jsx/.js files ONLY. Do NOT use TypeScript/.tsx)",
+    "libraries": [
+      "framer-motion",
+      "lucide-react",
+      "recharts",
+      "@studio-freight/lenis",
+      "clsx",
+      "tailwind-merge",
+      "shadcn/ui (Dialog for Case Studies)"
+    ],
+    "testing": {
+      "rules": "All interactive elements, forms, and major sections MUST include 'data-testid' attributes.",
+      "examples": [
+        "data-testid='hero-cta-connect'",
+        "data-testid='case-study-card-1'",
+        "data-testid='nav-link-experience'",
+        "data-testid='skill-cluster-ai'"
+      ]
+    }
+  }
+}
