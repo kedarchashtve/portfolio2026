@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -167,7 +168,7 @@ function CaseStudyCard({ cs, index }) {
             <DialogTitle className="font-display text-3xl md:text-4xl tracking-tight mt-2">
               {cs.title}
             </DialogTitle>
-            <p className="text-[#94A3B8] mt-2">{cs.tagline}</p>
+            <DialogDescription className="text-[#94A3B8] mt-2">{cs.tagline}</DialogDescription>
           </DialogHeader>
 
           <div className="mt-8 grid md:grid-cols-2 gap-6">
