@@ -6,7 +6,7 @@ import os
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List, Optional
+from typing import List
 import uuid
 from datetime import datetime, timezone
 
@@ -22,10 +22,8 @@ app = FastAPI()
 api_router = APIRouter(prefix="/api")
 
 
-# --- Models ---
 class CaseStudy(BaseModel):
     model_config = ConfigDict(extra="ignore")
-
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     slug: str
     title: str
@@ -54,96 +52,90 @@ class StatusCheckCreate(BaseModel):
     client_name: str
 
 
-# --- Seed data ---
+# Public-facing capability snapshots. These are not presented as client case studies
+# or measured campaign results; replace with approved, verified work when available.
 SEED_CASE_STUDIES = [
     {
-        "slug": "d2c-wellness",
-        "title": "D2C Wellness Brand",
-        "subtitle": "Email + Meta Synergy",
-        "tagline": "Turning subscribers into a compounding growth channel.",
-        "image": "https://images.unsplash.com/photo-1644088379091-d574269d422f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NjV8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRpZ2l0YWwlMjBub2RlcyUyMG5ldHdvcmslMjBkYXJrfGVufDB8fHx8MTc4MTYyNzgwNnww&ixlib=rb-4.1.0&q=85",
+        "slug": "brand-storytelling",
+        "title": "Brand Storytelling",
+        "subtitle": "Positioning · Narrative · Identity",
+        "tagline": "Finding the story that makes a brand easier to recognise and remember.",
+        "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
         "accent": "#7C3AED",
-        "problem": "A direct-to-consumer wellness brand was struggling to grow its high-intent email list. Acquisition costs were rising on Meta and the retention engine was flat — every campaign felt like starting from zero.",
-        "strategy": "I wired email nurturing and Meta campaigns into one feedback loop. Paid traffic fed segmented lists; email behavior fed the lookalike pools. The funnel started teaching itself who to target next.",
+        "problem": "A brand can have a good product and still struggle to communicate what makes it distinct.",
+        "strategy": "Start with the audience, category and brand point of view. Build a simple narrative that can guide communication across touchpoints.",
         "actions": [
-            "Segmented audiences by intent and lifecycle stage",
-            "Built email automation flows for welcome, browse-abandon and post-purchase",
-            "Optimized Meta creatives weekly against email-engaged cohorts",
-            "Set up cohort-level performance tracking across both channels"
+            "Explore the audience and category context",
+            "Clarify the central message and brand voice",
+            "Translate the direction into repeatable content themes"
         ],
         "results": [
-            "+47% growth in qualified email subscribers in a single quarter",
-            "Higher LTV from email-first customers vs. paid-first",
-            "Reduced reliance on top-of-funnel paid spend"
+            "A clearer communication direction",
+            "A consistent foundation for future creative work"
         ],
-        "tools": ["Meta Ads", "Klaviyo-style email flows", "GA4", "UTM frameworks"],
-        "metric_label": "Email Subscriber Growth",
-        "metric_value": "+47%",
+        "tools": ["Research", "Positioning", "Content strategy", "Creative direction"],
+        "metric_label": "Focus",
+        "metric_value": "Story",
         "order": 1,
     },
     {
-        "slug": "multi-industry-agency",
-        "title": "Multi-Industry Agency Clients",
-        "subtitle": "Scaling Across 20+ Brands",
-        "tagline": "One operating system, twenty different industries.",
-        "image": "https://images.unsplash.com/photo-1515703944563-dbcfbf121b3d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBhcmNoaXRlY3R1cmUlMjBkYXJrfGVufDB8fHx8MTc4MTYyNzgwNnww&ixlib=rb-4.1.0&q=85",
+        "slug": "social-content-systems",
+        "title": "Social Content Systems",
+        "subtitle": "Ideas · Formats · Publishing",
+        "tagline": "Making social content feel connected instead of like a collection of random posts.",
+        "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
         "accent": "#06B6D4",
-        "problem": "Twenty plus client brands across wildly different industries — wellness, SaaS, retail, services. Every account had its own reporting cadence, creative process, and campaign rhythm. Quality and consistency were impossible to hold at that scale.",
-        "strategy": "I treated the agency itself as a product. Reusable workflows replaced bespoke ones. Templates, briefs and dashboards became shared infrastructure — so every new brand plugged into a system instead of starting from a blank page.",
+        "problem": "Without a clear content direction, social channels can become inconsistent and difficult to sustain.",
+        "strategy": "Connect content pillars, audience interests and platform-native formats to a practical publishing rhythm.",
         "actions": [
-            "Managed 20+ brand accounts across paid, organic and email",
-            "Automated weekly performance reports with templated dashboards",
-            "Built repeatable content systems for social planning and approvals",
-            "Standardized multi-channel campaign briefs across the agency"
+            "Develop content pillars and recurring formats",
+            "Shape ideas into hooks, scripts and creative briefs",
+            "Plan publishing and review performance signals"
         ],
         "results": [
-            "20+ brands managed in parallel without quality drop",
-            "Reporting time cut dramatically through automation",
-            "Faster onboarding for every new client added to the roster"
+            "A more coherent content direction",
+            "A repeatable process for planning and iteration"
         ],
-        "tools": ["Meta Ads", "Google Ads", "Notion/Sheets workflows", "Content calendars"],
-        "metric_label": "Brands Managed",
-        "metric_value": "20+",
+        "tools": ["Social strategy", "Reels", "Creative briefs", "Content calendars"],
+        "metric_label": "Focus",
+        "metric_value": "Content",
         "order": 2,
     },
     {
-        "slug": "growth-systems",
-        "title": "Growth Systems",
-        "subtitle": "SEO · Social · Paid · Email · AI",
-        "tagline": "Marketing channels aren't silos — they're a network.",
-        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxkYXNoYm9hcmQlMjBkYXRhJTIwYWJzdHJhY3QlMjBkYXJrfGVufDB8fHx8MTc4MTYyNzgwNnww&ixlib=rb-4.1.0&q=85",
+        "slug": "campaign-thinking",
+        "title": "Campaign Thinking",
+        "subtitle": "Audience · Message · Distribution",
+        "tagline": "Connecting the campaign idea to the people it needs to reach.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
         "accent": "#A78BFA",
-        "problem": "Most teams run SEO, social, paid, email and AI as five disconnected workstreams. The handoffs are messy, attribution is broken, and learnings die inside each channel.",
-        "strategy": "I design growth as one interconnected system. SEO insights fuel social hooks. Social winners become paid creatives. Email behavior trains lookalikes. AI workflows compress the loop so the whole thing learns faster than any single channel could.",
+        "problem": "Marketing activity is less effective when creative, audience and distribution are planned in isolation.",
+        "strategy": "Treat the campaign as one connected system, with a clear objective and feedback loop between creative and performance.",
         "actions": [
-            "Mapped channel dependencies into a single growth graph",
-            "Built AI-assisted research and reporting nodes",
-            "Used winning organic content as paid testing fuel",
-            "Created cross-channel attribution views for clearer decisions"
+            "Define the objective and audience",
+            "Align the message with channel and format",
+            "Review results and identify the next test"
         ],
         "results": [
-            "Channels compound instead of cannibalize",
-            "Faster creative testing cycles with AI-assisted variants",
-            "A repeatable framework for any new brand from day zero"
+            "A connected campaign planning approach",
+            "Clearer learning for future iterations"
         ],
-        "tools": ["GA4", "Meta Ads", "SEO tooling", "Email automation", "AI workflow stack"],
-        "metric_label": "Connected Channels",
-        "metric_value": "5×",
+        "tools": ["Campaign planning", "Meta Ads", "Google Ads", "Performance reviews"],
+        "metric_label": "Focus",
+        "metric_value": "Growth",
         "order": 3,
     },
 ]
 
 
-# --- Routes ---
 @api_router.get("/")
 async def root():
-    return {"message": "Kedar Chashtve — Growth Portfolio API"}
+    return {"message": "Kedar Chashtve — Marketing & Creative Portfolio API"}
 
 
 @api_router.get("/case-studies", response_model=List[CaseStudy])
 async def list_case_studies():
     docs = await db.case_studies.find({}, {"_id": 0}).sort("order", 1).to_list(100)
-    return [CaseStudy(**d) for d in docs]
+    return [CaseStudy(**doc) for doc in docs]
 
 
 @api_router.get("/case-studies/{slug}", response_model=CaseStudy)
@@ -174,13 +166,13 @@ async def get_status_checks():
 
 @app.on_event("startup")
 async def seed_data():
-    """Idempotent seed: replace case studies on every boot so edits to SEED show up."""
+    """Replace public capability snapshots on startup so seed edits stay current."""
     try:
         await db.case_studies.delete_many({})
-        await db.case_studies.insert_many([dict(c) for c in SEED_CASE_STUDIES])
-        logger.info("Seeded %d case studies", len(SEED_CASE_STUDIES))
-    except Exception as e:
-        logger.exception("Seed failed: %s", e)
+        await db.case_studies.insert_many([dict(item) for item in SEED_CASE_STUDIES])
+        logger.info("Seeded %d capability snapshots", len(SEED_CASE_STUDIES))
+    except Exception as error:
+        logger.exception("Seed failed: %s", error)
 
 
 app.include_router(api_router)
