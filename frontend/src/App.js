@@ -6,11 +6,11 @@ import Portfolio from "@/pages/Portfolio";
 function App() {
   useEffect(() => {
     document.documentElement.classList.add("dark");
-    document.title = "Kedar Chashtve — Growth Marketing Strategist";
+    document.title = "Kedar Chashtve | KedarFlix — The Series";
   }, []);
 
   return (
-    <div className="App min-h-screen bg-[#050816] text-[#F8FAFC] antialiased selection:bg-[#7C3AED]/30 selection:text-white">
+    <div className="App min-h-screen bg-[#07070a] text-[#F5F3EF] antialiased">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Portfolio />} />
