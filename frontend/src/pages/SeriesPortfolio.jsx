@@ -107,7 +107,7 @@ export default function Portfolio() {
           <motion.div className="hero-content" initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:.8}}>
             <div className="hero-kicker"><span className="netflix-n">N</span> ORIGINAL SERIES <span className="hero-separator">|</span> MARKETING · CREATIVE · GROWTH</div>
             <div className="hero-title-lockup"><span className="hero-small-title">THE STORY OF</span><h1>KEDAR<br/><em>CHASHTVE</em></h1></div>
-            <div className="hero-meta"><span className="match">98% Match</span><span>2026</span><span className="maturity">U/A 16+</span><span>4 Chapters</span><span className="hd-mark">HD</span></div>
+            <div className="hero-meta"><span className="match">FEATURED</span><span>2026</span><span className="maturity">U/A 16+</span><span>4 Chapters</span><span className="hd-mark">HD</span></div>
             <p className="hero-description">{heroLine}</p>
             <div className="hero-buttons"><a className="watch-button" href="#continue"><Play size={18} fill="currentColor"/> Explore the series</a><a className="more-button" href="#about"><Info size={19}/> More Info</a></div>
             <div className="hero-subline"><span>NOW STREAMING</span><span>BASED IN NASHIK, INDIA</span></div>
@@ -162,7 +162,7 @@ export default function Portfolio() {
     <AnimatePresence>{selected && <motion.div className="detail-backdrop" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onClick={()=>setSelected(null)}>
       <motion.div className="detail-modal" initial={{y:40,scale:.97,opacity:0}} animate={{y:0,scale:1,opacity:1}} exit={{y:30,opacity:0}} onClick={e=>e.stopPropagation()}>
         <div className="detail-cover" style={{backgroundImage:`linear-gradient(0deg,#16161d,transparent 85%),url(${selected.image})`}}><button className="detail-close" onClick={()=>setSelected(null)}><X size={20}/></button><span className="detail-label">KEDARFLIX ORIGINAL</span><h2>{selected.title || selected.role}</h2></div>
-        <div className="detail-content"><div className="detail-actions"><span className="match">98% Match</span><span>{selected.genre || selected.company}</span></div><p>{selected.desc || selected.summary || selected.tagline}</p><h4>Inside this story</h4><ul>{(selected.details || selected.tags || []).map(d=><li key={d}><Check size={14}/>{d}</li>)}</ul><p className="detail-note">A capability snapshot of my approach and interests. Client-confidential work and unapproved campaign data are intentionally not displayed.</p></div>
+        <div className="detail-content"><div className="detail-actions"><span className="match">FEATURED</span><span>{selected.genre || selected.company}</span></div><p>{selected.desc || selected.summary || selected.tagline}</p><h4>Inside this story</h4><ul>{(selected.details || selected.tags || []).map(d=><li key={d}><Check size={14}/>{d}</li>)}</ul><p className="detail-note">A capability snapshot of my approach and interests. Client-confidential work and unapproved campaign data are intentionally not displayed.</p></div>
       </motion.div>
     </motion.div>}</AnimatePresence>
   </div>;
