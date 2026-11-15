@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Clapperboard, Download, Info, Linkedin, Mail, Play, Plus, Search, Volume2, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ChevronDown, Download, Info, Linkedin, Mail, Menu, Play, X } from "lucide-react";
 import { PROFILE } from "@/data/portfolio";
 
 const IMG = {
@@ -60,8 +60,6 @@ export default function Portfolio() {
   const [stage, setStage] = useState("intro");
   const [profile, setProfile] = useState("recruiter");
   const [selected, setSelected] = useState(null);
-  const [showAll, setShowAll] = useState(false);
-  const [muted, setMuted] = useState(true);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
@@ -100,7 +98,7 @@ export default function Portfolio() {
         <nav className={mobileMenu?"nav-open":""}>
           <a href="#home" onClick={()=>setMobileMenu(false)}>Home</a><a href="#continue" onClick={()=>setMobileMenu(false)}>Continue Watching</a><a href="#originals" onClick={()=>setMobileMenu(false)}>Originals</a><a href="#seasons" onClick={()=>setMobileMenu(false)}>Seasons</a><a href="#about" onClick={()=>setMobileMenu(false)}>About</a>
         </nav>
-        <div className="nav-right"><button className="profile-switch" onClick={()=>setStage("profiles")}><span className={`mini-avatar bg-gradient-to-br ${activeProfile.color}`}>{activeProfile.title.charAt(0)}</span><ChevronDown size={14}/></button><button className="mobile-menu" onClick={()=>setMobileMenu(v=>!v)} aria-label="Toggle menu">{mobileMenu?<X/>:<Search/>}</button></div>
+        <div className="nav-right"><button className="profile-switch" onClick={()=>setStage("profiles")}><span className={`mini-avatar bg-gradient-to-br ${activeProfile.color}`}>{activeProfile.title.charAt(0)}</span><ChevronDown size={14}/></button><button className="mobile-menu" onClick={()=>setMobileMenu(v=>!v)} aria-label="Toggle menu">{mobileMenu?<X/>:<Menu/>}</button></div>
       </header>
 
       <main>
@@ -114,7 +112,6 @@ export default function Portfolio() {
             <div className="hero-buttons"><a className="watch-button" href="#continue"><Play size={18} fill="currentColor"/> Explore the series</a><a className="more-button" href="#about"><Info size={19}/> More Info</a></div>
             <div className="hero-subline"><span>NOW STREAMING</span><span>BASED IN NASHIK, INDIA</span></div>
           </motion.div>
-          <button className="sound-toggle" onClick={()=>setMuted(v=>!v)} aria-label="Toggle sound"><Volume2 size={17}/><span>{muted?"Sound off":"Sound on"}</span></button>
           <div className="hero-age">A STORY STILL IN PROGRESS</div>
         </section>
 
